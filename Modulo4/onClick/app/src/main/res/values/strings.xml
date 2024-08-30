@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ClaseOnClick</string>
+
+    <string name="btn_mostrar">Mostrar</string>
+    <string name="hEditText">Escribe aquí</string>
+    <string name="btn_notificacion">Notificación</string>
+
+    <string name="opt1">Opción 1</string>
+    <string name="opt2">Opción 2</string>
+    <string name="opt3">Opción 3</string>
+    <string name="val">Validar</string>
+</resources>
