@@ -7,19 +7,22 @@ public class ListElement {
     private String colorName;
     private String subtitle;
     private String title;
+    private String status;
 
     public ListElement(
             String color,
             String name,
             String colorName,
             String subtitle,
-            String title
+            String title,
+            String status
     ) {
         this.color = color;
         this.name = name;
         this.colorName = colorName;
         this.subtitle = subtitle;
         this.title = title;
+        this.status = status;
     }
 
     public String getTitle() {
@@ -61,4 +64,8 @@ public class ListElement {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
 }
