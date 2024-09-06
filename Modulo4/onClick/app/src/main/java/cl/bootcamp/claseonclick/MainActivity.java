@@ -13,20 +13,24 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import cl.bootcamp.claseonclick.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
-    EditText texto;
-    TextView mostrar;
-    Button btnMostrar, btnNotify, btnValidarCb, btnValidarRb;
-    CheckBox cbOpcion1, cbOpcion2;
-    RadioButton rbOpcion1, rbOpcion2, rbOpcion3;
+//    EditText texto;
+//    TextView mostrar;
+//    Button btnMostrar, btnNotify, btnValidarCb, btnValidarRb;
+//    CheckBox cbOpcion1, cbOpcion2;
+//    RadioButton rbOpcion1, rbOpcion2, rbOpcion3;
+
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        texto = (EditText) findViewById(R.id.etMostrar);
+       /* texto = (EditText) findViewById(R.id.etMostrar);
         mostrar = (TextView) findViewById(R.id.tvMostrar);
         btnMostrar = (Button) findViewById(R.id.btnMostrar);
         btnNotify = (Button) findViewById(R.id.btnNotify);
@@ -36,12 +40,17 @@ public class MainActivity extends AppCompatActivity {
         cbOpcion2 = (CheckBox) findViewById(R.id.cb2);
         rbOpcion1 = (RadioButton) findViewById(R.id.rb1);
         rbOpcion2 = (RadioButton) findViewById(R.id.rb2);
-        rbOpcion3 = (RadioButton) findViewById(R.id.rb3);
+        rbOpcion3 = (RadioButton) findViewById(R.id.rb3); */
 
-        btnMostrar.setOnClickListener(new View.OnClickListener() {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+
+        binding.btnMostrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mostrar.setText(texto.getText());
+                binding.tvMostrar.setText(binding.etMostrar.getText());
             }
         });
         mostrarNotificacion();
@@ -50,27 +59,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void mostrarNotificacion() {
-        btnNotify.setOnClickListener(new View.OnClickListener() {
+        binding.btnNotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), texto.getText(), Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext(), binding.etMostrar.getText(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public void validarCheckBox() {
-        btnValidarCb.setOnClickListener(new View.OnClickListener() {
+        binding.btnValidarCb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String cadena = "Seleccionado: ";
 
-                if (cbOpcion1.isChecked()) {
-                    cadena += cbOpcion1.getText();
+                if (binding.cb1.isChecked()) {
+                    cadena += binding.cb1.getText();
                 }
-                if (cbOpcion2.isChecked()) {
-                    cadena += cbOpcion2.getText();
+                if (binding.cb2.isChecked()) {
+                    cadena += binding.cb2.getText();
                 }
-                if (!cbOpcion1.isChecked() && !cbOpcion2.isChecked()) {
+                if (!binding.cb1.isChecked() && !binding.cb2.isChecked()) {
                     cadena += "-";
                 }
 
@@ -80,19 +89,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void validarRadioButtons() {
-        btnValidarRb.setOnClickListener(new View.OnClickListener() {
+        binding.btnValidarRb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String cadena = "Seleccionado: ";
 
-                if (rbOpcion1.isChecked()) {
-                    cadena += rbOpcion1.getText();
+                if (binding.rb1.isChecked()) {
+                    cadena += binding.rb1.getText();
                 }
-                if (rbOpcion2.isChecked()) {
-                    cadena += rbOpcion2.getText();
+                if (binding.rb2.isChecked()) {
+                    cadena += binding.rb2.getText();
                 }
-                if (rbOpcion3.isChecked()) {
-                    cadena += rbOpcion3.getText();
+                if (binding.rb3.isChecked()) {
+                    cadena += binding.rb3.getText();
                 }
 
                 Toast.makeText(MainActivity.this, cadena, Toast.LENGTH_LONG).show();
