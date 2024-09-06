@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ClaseNavigationComponent</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="f1">Fragmento 1</string>
+    <string name="f2">Fragmento 2</string>
+    <string name="f3">Fragmento 3</string>
+    <string name="home">Home</string>
+
+    <string name="frag1">1</string>
+    <string name="frag2">2</string>
+    <string name="frag3">3</string>
+
+    <string name="btnVol">Volver</string>
+</resources>
