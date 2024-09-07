@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EjercicioIntegrador</string>
+
+    <string name="nombre">Deadpool</string>
+
+    <string name="btnWsp">Whatsapp</string>
+    <string name="btnGit">GitHub</string>
+    <string name="btnEmail">Email</string>
+</resources>
