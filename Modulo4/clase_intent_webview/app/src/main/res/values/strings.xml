@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ClaseIntentWebView</string>
+
+    <string name="btnWV">WebView</string>
+    <string name="btnIntent">Intent</string>
+
+    <string name="titleWV">Web View</string>
+    <string name="titleIn">Intent</string>
+</resources>
