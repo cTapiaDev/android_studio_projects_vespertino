@@ -39,6 +39,10 @@ fun HomeView(navController: NavController) {
 
 @Composable
 fun ContentHomeView(paddingValues: PaddingValues, navController: NavController) {
+
+    val id = 12345
+    val nombre = ""
+
     Column(
         modifier = Modifier
             .padding(paddingValues)
@@ -49,7 +53,7 @@ fun ContentHomeView(paddingValues: PaddingValues, navController: NavController) 
         TitleView("Home View")
         Space()
         MainButton("Details View", Color.White) {
-            navController.navigate("Details")
+            navController.navigate("Details/${id}/?${nombre}")
         }
     }
 }
