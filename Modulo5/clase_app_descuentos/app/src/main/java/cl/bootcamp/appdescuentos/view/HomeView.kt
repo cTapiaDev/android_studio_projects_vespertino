@@ -62,8 +62,8 @@ fun ContentHomeView(paddingValues: PaddingValues) {
     ) {
 
         ContentCards(
-            title1 = "Total", number1 = totalDescuento,
-            title2 = "Descuento", number2 = totalPrecio
+            title1 = "Descuento", number1 = totalPrecio,
+            title2 = "Total", number2 = totalDescuento
         )
 
 
@@ -76,11 +76,23 @@ fun ContentHomeView(paddingValues: PaddingValues) {
         MainTextField(
             value = descuento,
             onValueChange = { descuento = it },
-            label = "Descuento"
+            label = "Descuento %"
         )
         Space()
         MainButton("Generar descuento") {
-            showAlert = true
+            if (precio != "" && descuento != "") {
+                totalPrecio = calcularPrecio(precio.toDouble(), descuento.toDouble())
+                totalDescuento = calcularDescuento(precio.toDouble(), descuento.toDouble())
+            } else {
+                showAlert = true
+            }
+        }
+        Space()
+        MainButton("Limpiar", color = MaterialTheme.colorScheme.error) {
+            precio = ""
+            descuento = ""
+            totalPrecio = 0.0
+            totalDescuento = 0.0
         }
 
         if (showAlert) {
@@ -92,4 +104,14 @@ fun ContentHomeView(paddingValues: PaddingValues) {
             ) { }
         }
     }
+}
+
+fun calcularDescuento(precio: Double, descuento: Double): Double {
+    val result = precio * (1 - descuento / 100)
+    return kotlin.math.round(result * 100) / 100.0
+}
+
+fun calcularPrecio(precio: Double, descuento: Double): Double {
+    val result = precio - calcularDescuento(precio, descuento)
+    return kotlin.math.round(result * 100) / 100.0
 }
