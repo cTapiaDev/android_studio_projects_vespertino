@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "cl.bootcamp.appdescuentos"
+    namespace = "cl.bootcamp.appdescuentosviewmodel"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "cl.bootcamp.appdescuentos"
+        applicationId = "cl.bootcamp.appdescuentosviewmodel"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
@@ -66,5 +66,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(kotlin("script-runtime"))
 }
