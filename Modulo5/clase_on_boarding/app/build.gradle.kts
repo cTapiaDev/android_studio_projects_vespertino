@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "cl.bootcamp.clasedatastore"
+    namespace = "cl.bootcamp.onboardingapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "cl.bootcamp.clasedatastore"
+        applicationId = "cl.bootcamp.onboardingapp"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
@@ -67,6 +67,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(libs.androidx.datastore.preferences)
-    implementation(kotlin("script-runtime"))
+    implementation("com.google.accompanist:accompanist-pager:0.15.0")
+    implementation("com.airbnb.android:lottie-compose:6.5.1")
+    implementation("androidx.navigation:navigation-compose:2.8.2")
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
 }
