@@ -6,14 +6,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.datastore.core.DataStore
+import androidx.navigation.NavController
 import cl.bootcamp.onboardingapp.R
+import cl.bootcamp.onboardingapp.dataStore.StoreBoarding
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun MainOnBoarding(
-    modifier: Modifier
+    navController: NavController,
+    store: StoreBoarding
 ) {
     val items = ArrayList<PageData>()
 
@@ -54,6 +58,8 @@ fun MainOnBoarding(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(Color.White)
+            .background(Color.White),
+        navController,
+        store,
     )
 }

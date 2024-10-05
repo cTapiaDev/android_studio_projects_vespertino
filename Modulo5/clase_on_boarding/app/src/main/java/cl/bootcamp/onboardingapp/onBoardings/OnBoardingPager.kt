@@ -15,6 +15,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import cl.bootcamp.onboardingapp.dataStore.StoreBoarding
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
@@ -23,8 +25,10 @@ import com.google.accompanist.pager.PagerState
 @Composable
 fun OnBoardingPager(
     item: List<PageData>,
-    modifier: Modifier,
-    pagerState: PagerState
+    pagerState: PagerState,
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    store: StoreBoarding
 ) {
     Box(modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -69,7 +73,11 @@ fun OnBoardingPager(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
         ) {
-            ButtonFinish(pagerState.currentPage)
+            ButtonFinish(
+                pagerState.currentPage,
+                navController,
+                store
+            )
         }
     }
 
