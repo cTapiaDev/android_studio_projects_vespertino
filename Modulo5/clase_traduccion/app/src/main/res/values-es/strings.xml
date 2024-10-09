@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ClaseTraduccion</string>
+
+    <string name="title">Hola Mundo</string>
+    <string name="subtitle">El Mundo es tuyo</string>
+</resources>
