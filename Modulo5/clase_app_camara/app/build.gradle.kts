@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "cl.bootcamp.clasetraduccion"
+    namespace = "cl.bootcamp.claseappcamara"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "cl.bootcamp.clasetraduccion"
+        applicationId = "cl.bootcamp.claseappcamara"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
@@ -67,9 +67,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(libs.androidx.datastore)
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
-
-    implementation("com.google.mlkit:translate:17.0.3")
-    implementation(kotlin("script-runtime"))
+    implementation("io.coil-kt:coil-compose:2.7.0")
+    implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.1")
 }
