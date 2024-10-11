@@ -71,5 +71,6 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     implementation("com.google.mlkit:translate:17.0.3")
-    implementation(kotlin("script-runtime"))
+
+    implementation("com.google.accompanist:accompanist-permissions:0.24.11-rc")
 }
