@@ -1,5 +1,7 @@
 package cl.bootcamp.clasetraduccion.translator
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,6 +20,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,7 +31,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import cl.bootcamp.clasetraduccion.R
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
 
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun TranslateView(
     viewModel: TranslateViewModel
@@ -43,6 +51,25 @@ fun TranslateView(
     var expandedTarget by remember { mutableStateOf(false) }
     var selectedSourceLang by remember { mutableStateOf(languageOptions[0]) }
     var selectedTargetLang by remember { mutableStateOf(languageOptions[1]) }
+
+    val itemsVoice = viewModel.itemsVoice
+    var selectedTargetVoice by remember { mutableStateOf(itemsVoice[1]) }
+
+    val permissionState = rememberPermissionState(permission = Manifest.permission.RECORD_AUDIO)
+
+    SideEffect {
+        permissionState.launchPermissionRequest()
+    }
+
+    val speechRecognizerLauncher = rememberLauncherForActivityResult(
+        SpeechRecognizerContract()
+    ) {
+        viewModel.onValue(it.toString()
+            .replace("[","")
+            .replace("]","")
+            .trimStart()
+        )
+    }
 
     Column(
         modifier = Modifier
@@ -82,6 +109,7 @@ fun TranslateView(
                 onClickItem = { index ->
                     indexTarget = index
                     selectedTargetLang = languageOptions[index]
+                    selectedTargetVoice = itemsVoice[index]
                     expandedTarget = false
                 }
             )
@@ -113,6 +141,31 @@ fun TranslateView(
             modifier = Modifier
                 .fillMaxWidth()
         )
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            MainIconButton(R.drawable.icon_mic) {
+                if (permissionState.status.isGranted) {
+                    speechRecognizerLauncher.launch(Unit)
+                } else {
+                    permissionState.launchPermissionRequest()
+                }
+            }
+            MainIconButton(R.drawable.icon_translate) {
+                viewModel.onTranslate(
+                    state.textToTranslate,
+                    context,
+                    selectedSourceLang,
+                    selectedTargetLang
+                )
+            }
+            MainIconButton(R.drawable.icon_speak) {
+                viewModel.textToSpeech(context, selectedTargetVoice)
+            }
+            MainIconButton(R.drawable.icon_delete) { viewModel.clean() }
+        }
+
         if (state.isDownloading) {
             CircularProgressIndicator()
             Text(text = "Descargando modelo, espera un momento...")

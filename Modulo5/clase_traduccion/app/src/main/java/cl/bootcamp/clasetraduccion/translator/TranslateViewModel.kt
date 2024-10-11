@@ -1,6 +1,7 @@
 package cl.bootcamp.clasetraduccion.translator
 
 import android.content.Context
+import android.speech.tts.TextToSpeech
 import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -11,6 +12,7 @@ import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
+import java.util.Locale
 
 class TranslateViewModel: ViewModel() {
 
@@ -34,6 +36,35 @@ class TranslateViewModel: ViewModel() {
         "ITALIAN",
         "NORWEGIAN"
     )
+
+    val itemsVoice = listOf(
+        Locale.ROOT,
+        Locale.ENGLISH,
+        Locale.ITALIAN,
+        Locale.ENGLISH
+    )
+
+    private var textToSpeech: TextToSpeech? = null
+
+    fun textToSpeech(context: Context, voice: Locale) {
+        textToSpeech = TextToSpeech(
+            context
+        ) {
+            if (it == TextToSpeech.SUCCESS) {
+                textToSpeech?.let { txtToSpeech ->
+                    txtToSpeech.language = voice
+                    txtToSpeech.setSpeechRate(1.0f)
+                    txtToSpeech.speak(
+                        state.translateText,
+                        TextToSpeech.QUEUE_ADD,
+                        null,
+                        null
+                    )
+                }
+            }
+        }
+    }
+
 
     fun onTranslate(text: String, context: Context, sourceLang: String, targetLang: String) {
         val options = TranslatorOptions
@@ -74,6 +105,13 @@ class TranslateViewModel: ViewModel() {
             }.addOnFailureListener {
                 Toast.makeText(context, "Falló la descarga del modelo", Toast.LENGTH_LONG).show()
             }
+    }
+
+    fun clean() {
+        state = state.copy(
+            textToTranslate = "",
+            translateText = ""
+        )
     }
 
 }
