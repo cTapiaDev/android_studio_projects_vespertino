@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import cl.bootcamp.claseroom.navigation.NavManager
 import cl.bootcamp.claseroom.ui.theme.ClaseRoomTheme
+import cl.bootcamp.claseroom.viewModel.CronometroViewModel
 import cl.bootcamp.claseroom.viewModel.CronosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,12 +24,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val cronosViewModel: CronosViewModel by viewModels()
+        val cronometroViewModel: CronometroViewModel by viewModels()
         setContent {
             ClaseRoomTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavManager(
                         modifier = Modifier.padding(innerPadding),
-                        cronosViewModel
+                        cronosViewModel,
+                        cronometroViewModel
                     )
                 }
             }
