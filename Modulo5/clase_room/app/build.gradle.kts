@@ -87,4 +87,7 @@ dependencies {
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.8.2")
+
+    // Swipe
+    implementation("me.saket.swipe:swipe:1.1.1")
 }
