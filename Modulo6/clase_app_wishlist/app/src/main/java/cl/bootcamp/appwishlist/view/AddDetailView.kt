@@ -4,22 +4,27 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.Scaffold
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.Button
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import cl.bootcamp.appwishlist.R
 import cl.bootcamp.appwishlist.components.AppBarView
 import cl.bootcamp.appwishlist.components.Space
 import cl.bootcamp.appwishlist.components.WishTextField
-import cl.bootcamp.appwishlist.navigation.Screen
+import cl.bootcamp.appwishlist.model.Wish
 import cl.bootcamp.appwishlist.viewModel.WishViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun AddDetailView(
@@ -27,11 +32,28 @@ fun AddDetailView(
     navController: NavController,
     wishViewModel: WishViewModel
 ) {
+
+    val snackMessage = remember { mutableStateOf("")}
+    val scope = rememberCoroutineScope()
+    val scaffoldState = rememberScaffoldState()
+
+
+    if (id != 0L) {
+        val wish = wishViewModel.getAWishById(id).collectAsState(initial = Wish(0L, "" , ""))
+        wishViewModel.wishTitleState = wish.value.title
+        wishViewModel.wishDescriptionState = wish.value.description
+    } else {
+        wishViewModel.wishTitleState = ""
+        wishViewModel.wishDescriptionState = ""
+    }
+
+
     Scaffold(
         topBar = { AppBarView(
             if (id != 0L) stringResource(R.string.update_wish)
             else stringResource(R.string.add_wish)
-        ) {navController.navigateUp()} }
+        ) {navController.navigateUp()} },
+        scaffoldState = scaffoldState
     ) {
         Column(
             modifier = Modifier
@@ -56,9 +78,32 @@ fun AddDetailView(
             Button(
                 onClick = {
                     if (wishViewModel.wishTitleState.isNotEmpty() && wishViewModel.wishDescriptionState.isNotEmpty()) {
-                        // Modificar base de datos -- Update
+                        if (id != 0L) {
+                            // UPDATE
+                            wishViewModel.updateWish(
+                                Wish(
+                                    id = id,
+                                    title = wishViewModel.wishTitleState.trim(),
+                                    description = wishViewModel.wishDescriptionState.trim()
+                                )
+                            )
+                            snackMessage.value = "Modificando deseo..."
+                        } else {
+                            // INSERT
+                            wishViewModel.addWish(
+                                Wish(
+                                    title = wishViewModel.wishTitleState.trim(),
+                                    description = wishViewModel.wishDescriptionState.trim()
+                                )
+                            )
+                            snackMessage.value = "Creando deseo..."
+                        }
                     } else {
-                        // Agregar nuevo item al Room
+                        snackMessage.value = "Debes ingresar un deseo"
+                    }
+                    scope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(snackMessage.value)
+                        navController.navigateUp()
                     }
                 }
             ) {
