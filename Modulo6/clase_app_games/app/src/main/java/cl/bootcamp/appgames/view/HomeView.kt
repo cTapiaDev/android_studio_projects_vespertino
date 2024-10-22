@@ -27,7 +27,9 @@ import cl.bootcamp.appgames.viewModel.GamesViewModel
 fun HomeView(viewModel: GamesViewModel, navController: NavController) {
     Scaffold(
         topBar = {
-            MainTopBar(title = "API GAMES", onClickBackButton = {}) { }
+            MainTopBar(title = "API GAMES", onClickBackButton = {}) {
+                navController.navigate("SearchGameView")
+            }
         }
     ) {
         ContentHomeView(it, viewModel, navController)
