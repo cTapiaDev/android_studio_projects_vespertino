@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import cl.bootcamp.appgames.view.DetailView
 import cl.bootcamp.appgames.view.HomeView
+import cl.bootcamp.appgames.view.SearchGameView
 import cl.bootcamp.appgames.viewModel.GamesViewModel
 
 @Composable
@@ -22,6 +23,9 @@ fun NavManager(viewModel: GamesViewModel) {
         )) {
             val id = it.arguments?.getInt("id") ?: 0
             DetailView(viewModel, navController, id)
+        }
+        composable("SearchGameView") {
+            SearchGameView(viewModel, navController)
         }
     }
 }
