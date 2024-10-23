@@ -59,6 +59,7 @@ kapt {
 
 dependencies {
 
+    implementation(kotlin("script-runtime"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -88,6 +89,9 @@ dependencies {
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.8.3")
-    implementation(kotlin("script-runtime"))
+
+    // Pagination
+    implementation("androidx.paging:paging-runtime:3.3.2")
+    implementation("androidx.paging:paging-compose:3.3.2")
 
 }

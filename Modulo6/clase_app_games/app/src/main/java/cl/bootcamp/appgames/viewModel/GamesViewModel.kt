@@ -5,6 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import cl.bootcamp.appgames.data.GamesDataSource
 import cl.bootcamp.appgames.model.GameList
 import cl.bootcamp.appgames.repository.GamesRepository
 import cl.bootcamp.appgames.state.GameState
@@ -47,6 +51,24 @@ class GamesViewModel @Inject constructor(private val repository: GamesRepository
             )
         }
     }
+
+    fun getGameByName(name: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = repository.getGameByName(name)
+            state = state.copy(
+                name = result?.name ?: "",
+                description_raw = result?.description_raw ?: "",
+                metacritic = result?.metacritic ?: 0,
+                website = result?.website ?: "",
+                background_image_additional = result?.background_image_additional ?: ""
+            )
+        }
+    }
+
+    val gamesPage = Pager(PagingConfig(pageSize = 3)) {
+        GamesDataSource(repository)
+    }.flow.cachedIn(viewModelScope)
+
 
     fun clean() {
         state = state.copy(
