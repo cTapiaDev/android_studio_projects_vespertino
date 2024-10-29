@@ -88,4 +88,16 @@ dependencies {
 
     // Coil
     implementation("io.coil-kt:coil-compose:2.7.0")
+
+    // Shimmer (Skeleton)
+    implementation("com.valentinilk.shimmer:compose-shimmer:1.0.0")
+
+    // Test
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.51.1")
+    kaptAndroidTest("com.google.dagger:hilt-compiler:2.51.1")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
+    testImplementation("android.arch.core:core-testing:1.1.1")
+
+    // Hilt para ViewModel
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 }

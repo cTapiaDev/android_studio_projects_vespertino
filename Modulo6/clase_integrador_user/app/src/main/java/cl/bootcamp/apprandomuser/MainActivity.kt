@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import cl.bootcamp.apprandomuser.ui.theme.AppRandomUserTheme
+import cl.bootcamp.apprandomuser.view.HomeView
 import cl.bootcamp.apprandomuser.viewModel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,18 +26,8 @@ class MainActivity : ComponentActivity() {
         val viewModel: UserViewModel by viewModels()
         setContent {
             AppRandomUserTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeView(viewModel, innerPadding)
-                }
+                HomeView(viewModel)
             }
         }
     }
-}
-
-@Composable
-fun HomeView(
-    viewModel: UserViewModel,
-    paddingValues: PaddingValues
-) {
-
 }
