@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "location": {
+        "street": {
+          "number": 8155,
+          "name": "Fatih Sultan Mehmet Cd"
+        },
+        "city": "Kahramanmaraş",
+        "state": "Bayburt",
+        "country": "Turkey",
+        "postcode": 30471,
+        "coordinates": {
+          "latitude": "66.1146",
+          "longitude": "56.2240"
+        },
+        "timezone": {
+          "offset": "-8:00",
+          "description": "Pacific Time (US & Canada)"
+        }
+      }
+    }
+  ],
+  "info": {
+    "seed": "b3352c80c3eac7bb",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}
