@@ -10,6 +10,6 @@ data class UserWallet(
     val pais: String,
     val imagenLink: String,
     val cuenta: String,
-    val saldo: Int,
+    val saldo: Double,
     val depositos: Boolean
 )
