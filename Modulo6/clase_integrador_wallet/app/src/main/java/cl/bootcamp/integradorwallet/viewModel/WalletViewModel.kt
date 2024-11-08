@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,27 +27,26 @@ class WalletViewModel @Inject constructor(
         repo.getAllUserRoom()
     }
 
-    init {
-        getAllAPI()
-    }
 
-    private fun getAllAPI() {
+    fun getAllAPI() {
         viewModelScope.launch(Dispatchers.IO) {
             repo.getAllUserAPI()
         }
     }
 
     fun getUserById(id: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result = repo.getUserById(id)
-            state = state.copy(
-                nombre = result.nombre,
-                pais = result.pais,
-                imagenLink = result.imagenLink,
-                cuenta = result.cuenta,
-                saldo = result.saldo,
-                depositos = result.depositos
-            )
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                val result = repo.getUserById(id)
+                state = state.copy(
+                    nombre = result.nombre,
+                    pais = result.pais,
+                    imagenLink = result.imagenLink,
+                    cuenta = result.cuenta,
+                    saldo = result.saldo,
+                    depositos = result.depositos
+                )
+            }
         }
     }
 

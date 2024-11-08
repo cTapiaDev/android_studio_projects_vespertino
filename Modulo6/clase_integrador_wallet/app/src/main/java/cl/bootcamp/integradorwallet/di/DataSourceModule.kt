@@ -47,6 +47,6 @@ class DataSourceModule {
 
     @Singleton
     @Provides
-    fun userDao(db: DbDataSource): UserDao = db.userDao()
+    fun UserDao(db: DbDataSource): UserDao = db.userDao()
 
 }

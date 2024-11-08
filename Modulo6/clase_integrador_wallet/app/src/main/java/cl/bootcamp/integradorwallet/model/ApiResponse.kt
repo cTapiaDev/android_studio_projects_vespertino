@@ -1,7 +1,7 @@
 package cl.bootcamp.integradorwallet.model
 
 data class ApiResponse(
-    val resultados: ArrayList<UserWallet>
+    val results: ArrayList<UserWallet>
 )
 
 data class UserWallet(
