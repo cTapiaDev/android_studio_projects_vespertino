@@ -11,7 +11,6 @@ interface WalletRepository {
     suspend fun getUserById(id: Int): UserWallet
     suspend fun getAllUserAPI(): ArrayList<UserWallet>
     fun getAllUserRoom(): Flow<List<User>>
-
 }
 
 class WalletRepositoryImp @Inject constructor(
