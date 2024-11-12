@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "190773359296",
+    "project_id": "app-notes-vespertino",
+    "storage_bucket": "app-notes-vespertino.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190773359296:android:8c44bab963566d5a68b325",
+        "android_client_info": {
+          "package_name": "cl.bootcamp.appnotesvespertino"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxuy0_tkc_87NtX6T0BZFFsL9gC4asfL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
