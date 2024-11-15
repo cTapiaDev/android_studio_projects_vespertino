@@ -8,7 +8,7 @@ data class Heroe(
     val id: Int,
     val nombre: String,
     val primeraAparicion: String,
-    val imagen: String
+    val imagen: String,
 )
 
 data class HeroeID(
