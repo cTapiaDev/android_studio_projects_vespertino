@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import cl.bootcamp.appheroes.navigation.NavManager
 import cl.bootcamp.appheroes.ui.theme.AppHeroesTheme
 import cl.bootcamp.appheroes.view.HomeView
 import cl.bootcamp.appheroes.viewModel.HeroeViewModel
@@ -21,11 +22,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         val heroeViewModel: HeroeViewModel by viewModels()
         setContent {
             AppHeroesTheme {
-                HomeView(heroeViewModel)
+                NavManager(heroeViewModel)
             }
         }
     }
