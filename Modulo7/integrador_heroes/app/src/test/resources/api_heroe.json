@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "nombre": "Spider-Man",
+  "nombreReal": "Peter Parker",
+  "alias": [
+    "Spidey",
+    "El hombre Araña del Vecindario"
+  ],
+  "poderes": [
+    "Fuerza sobrehumana",
+    "Sentid arácnido",
+    "Adherencia a paredes",
+    "Lanzamiento de telarañas"
+  ],
+  "primeraAparicion": "Amazing Fantasy #15",
+  "historia": "Peter Parker, un joven de Queens, recibió sus poderes de una mordedura de araña radioactiva. Desde entonces, ha protegido Nueva York como Spider-Man mientras intenta equilibrar su vida como héroe y estudiante.",
+  "afiliaciones": [
+    "Los Vengadores",
+    "Los 4 Fantásticos",
+    "Daily Bugle"
+  ],
+  "imagen": "https://i.ibb.co/RHcnpcw/spiderman-comic.jpg"
+}

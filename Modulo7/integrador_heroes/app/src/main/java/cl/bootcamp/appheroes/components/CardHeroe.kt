@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -35,7 +36,8 @@ fun CardHeroe(
             .fillMaxWidth()
             .padding(10.dp)
             .clickable { onClick() }
-            .shadow(10.dp),
+            .shadow(10.dp)
+            .testTag("CardHeroe"),
         shape = RoundedCornerShape(3.dp),
         colors = CardDefaults.cardColors(
             containerColor = bgColor,
