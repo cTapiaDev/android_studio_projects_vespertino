@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Spider-Man",
+    "primeraAparicion": "Amazing Fantasy #15",
+    "imagen": "https://i.ibb.co/rfM6BTm/spiderman.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Iron Man",
+    "primeraAparicion": "Tales of Suspense #39",
+    "imagen": "https://i.ibb.co/D77n08V/ironman.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Capitán América",
+    "primeraAparicion": "Captain America Comics #1",
+    "imagen": "https://i.ibb.co/w0bk6qq/capitanamerica.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Thor",
+    "primeraAparicion": "Journey into Mystery #83",
+    "imagen": "https://i.ibb.co/nfgWN6B/thor.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Hulk",
+    "primeraAparicion": "The Incredible Hulk #1",
+    "imagen": "https://i.ibb.co/5Fc5s7F/hulk.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Viuda Negra",
+    "primeraAparicion": "Tales of Suspense #52",
+    "imagen": "https://i.ibb.co/VCvHkYv/viudanegra.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Doctor Strange",
+    "primeraAparicion": "Strange Tales #110",
+    "imagen": "https://i.ibb.co/86xnpsK/strange.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Bruja Escarlata",
+    "primeraAparicion": "X-Men #4",
+    "imagen": "https://i.ibb.co/sJbTTJh/brujaescarlata.jpg"
+  },
+  {
+    "id": 9,
+    "nombre": "Wolverine",
+    "primeraAparicion": "The Incredible Hulk #180",
+    "imagen": "https://i.ibb.co/zbWS4bn/wolverine.jpg"
+  },
+  {
+    "id": 10,
+    "nombre": "Deadpool",
+    "primeraAparicion": "New Mutants #98",
+    "imagen": "https://i.ibb.co/Kr6J2Qz/deadpool.jpg"
+  },
+  {
+    "id": 11,
+    "nombre": "Pantera Negra",
+    "primeraAparicion": "Fantastic Four #52",
+    "imagen": "https://i.ibb.co/D5Y6hwB/panteranegra.jpg"
+  },
+  {
+    "id": 12,
+    "nombre": "Capitana Marvel",
+    "primeraAparicion": "Marvel Super-Heroes #13",
+    "imagen": "https://i.ibb.co/JHhtMNn/capitanamarvel.jpg"
+  }
+]
